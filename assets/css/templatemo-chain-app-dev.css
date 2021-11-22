@@ -1049,36 +1049,40 @@ Services Style
 }
 
 .first-service .icon {
-  background-image: url(../images/service-icon-01.png);
+  background-image: url(../images/newIcons/notes.png);
+  background-size: 50px;
 }
 
 .first-service:hover .icon {
-  background-image: url(../images/service-icon-hover-01.png);
+  background-image: url(../images/newIcons/notes-hover.png);
 }
 
 .second-service .icon {
-  background-image: url(../images/service-icon-02.png);
+  background-image: url(../images/newIcons/exam.png);
+  background-size: 50px;
 }
 
 .second-service:hover .icon {
-  background-image: url(../images/service-icon-hover-02.png);
+  background-image: url(../images/newIcons/exam-hover.png);
 }
 
 
 .third-service .icon {
-  background-image: url(../images/service-icon-03.png);
+  background-image: url(../images/newIcons/formula.png);
+  background-size: 50px;
 }
 
 .third-service:hover .icon {
-  background-image: url(../images/service-icon-hover-03.png);
+  background-image: url(../images/newIcons/formula-hover.png);
 }
 
 .fourth-service .icon {
-  background-image: url(../images/service-icon-04.png);
+  background-image: url(../images/newIcons/chat.png);
+  background-size: 50px;
 }
 
 .fourth-service:hover .icon {
-  background-image: url(../images/service-icon-hover-04.png);
+  background-image: url(../images/newIcons/chat-hover.png);
 }
 
 .service-item:hover {
@@ -1977,14 +1981,16 @@ responsive
     background-color: #fff;
   }
   .main-banner:after {
-    display: none;
+    /* display: none; */
   } 
   .main-banner .left-content h2 {
     color: #2a2a2a;
+    font-size: 40px;
     margin-right: 0;
   }
   .main-banner .left-content p {
-    color: #afafaf;
+    /* color: #afafaf; */
+    color: #2a2a2a;
     margin-right: 0;
   }
   .main-banner .left-content .white-button a {
