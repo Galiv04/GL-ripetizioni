@@ -1165,6 +1165,10 @@ About Us
 .about-us .right-image {
   position: relative;
   z-index: 1;
+  margin: auto;
+  width: 60%;
+  /* border: 3px solid green; */
+  padding: 10px;
 }
 
 .about-us:after {
@@ -1263,6 +1267,7 @@ The Clients
   position: absolute;
   list-style: none;
   transition: 1s all cubic-bezier(0.075, 0.82, 0.165, 1);
+  display: none;
 }
 
 .the-clients ul.nacc li.active {
@@ -1271,6 +1276,7 @@ The Clients
   z-index: 2;
   opacity: 1;
   transform: translateX(0px);
+  display:block;
 }
 
 .the-clients ul.nacc li {
@@ -2096,6 +2102,9 @@ responsive
 }
 
 @media (max-width: 767px) {
+  footer .container{
+    padding-top: 400px;
+  }
   .the-clients .naccs .menu div {
     text-align: center;
   }
