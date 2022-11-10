@@ -2101,7 +2101,7 @@ responsive
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 993px) {
   footer .container{
     padding-top: 400px;
   }
