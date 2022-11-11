@@ -51,7 +51,7 @@ function refreshOnUserData(docData) {
               <input class="material-form__input" type="email" placeholder=" " id="input-email" pattern="[0-9a-zAZÑñ._@-]{10,50}" maxlength="50"/>
               <label class="material-form__label" for="input-email">Email </label>
               </div>
-              <p onclick="checkUser()" class="material-form__p">Login</p>
+              <p id="login-button" onclick="checkUser()" class="material-form__p">Login</p>
           </form>
       `;
     }
@@ -88,3 +88,18 @@ function checkUser() {
   getDocRef(db, user);
   readDocRef(docRef);
 }
+
+// Keyboard Enter Event Listener
+// Get the input field
+var input = document.getElementById("input-email");
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("login-button").click();
+  }
+});
