@@ -10,7 +10,8 @@
   margin: auto;
   width: 100%;
   display: block;
-  width: 400px;
+  min-width: 300px;
+  max-width: 500px;
   padding: 50px 40px;
   background-color: #fff;
   font-size: 16px;
@@ -43,7 +44,7 @@
   border: none;
   outline: none;
 }
-.material-form__input[type=password] {
+.material-form__input[type="password"] {
   letter-spacing: 7px;
 }
 .material-form__input:placeholder-shown:valid ~ .material-form__label {
@@ -52,28 +53,31 @@
   color: #ccc;
   font-size: 1em;
 }
-.material-form__input:placeholder-shown:focus ~ .material-form__label, .material-form__input:not(:placeholder-shown) ~ .material-form__label {
+.material-form__input:placeholder-shown:focus ~ .material-form__label,
+.material-form__input:not(:placeholder-shown) ~ .material-form__label {
   top: 0;
   left: 0;
   font-size: 0.75em;
 }
 .material-form__input:placeholder-shown:focus ~ .material-form__label {
-  color: #2196F3;
+  color: #2196f3;
 }
-.material-form__input:placeholder-shown:focus ~ .material-form__focus-animation {
-  background-color: #2196F3;
+.material-form__input:placeholder-shown:focus
+  ~ .material-form__focus-animation {
+  background-color: #2196f3;
 }
 .material-form__input:valid ~ .material-form__label {
-  color: #00E676;
+  color: #00e676;
 }
-.material-form__input:valid:not(:placeholder-shown) ~ .material-form__focus-animation {
-  background-color: #00E676;
+.material-form__input:valid:not(:placeholder-shown)
+  ~ .material-form__focus-animation {
+  background-color: #00e676;
 }
 .material-form__input:invalid ~ .material-form__label {
-  color: #F44336;
+  color: #f44336;
 }
 .material-form__input:invalid ~ .material-form__focus-animation {
-  background-color: #F44336;
+  background-color: #f44336;
 }
 .material-form__input:focus ~ .material-form__focus-animation {
   width: 100%;
@@ -93,17 +97,17 @@
 .material-form__error {
   position: absolute;
   transform: translate(-250px, 5px);
-  color: #F44336;
+  color: #f44336;
   font-size: 0.75em;
   font-family: sans-serif;
   transition: all 0.25s;
 }
 .material-form__p {
-    text-align: center;
+  text-align: center;
   line-height: 50px;
   width: 100%;
   margin-top: 15px;
-  background-color: #2196F3;
+  background-color: #2196f3;
   color: #fff;
   font-weight: bold;
   font-size: 1.1em;
