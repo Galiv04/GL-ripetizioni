@@ -125,3 +125,83 @@
   background-color: #0960a5;
   transform: scale(0.9);
 }
+
+
+/* EVENTS CSS */
+.events {
+  max-width: 350px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+}
+
+.events__heading {
+  margin: 0px 0px 10px 0px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.events__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.events__item {
+  display: flex;
+  padding: 12px 0px;
+  border-bottom: solid 1px #f1f1f1;
+}
+
+.events__item:hover {
+  cursor: pointer !important;
+}
+
+.events__item:last-child {
+  border: none;
+}
+
+.events__date {
+  text-align: center;
+  margin-right: 10px;
+  padding-left: 10px;
+  border-left: 3px solid #eaeaea;
+}
+
+.events__day {
+  color: #888;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.events__month {
+  color: #aaa;
+  font-size: 14px;
+  text-transform: lowercase;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.events__desc {
+  color: #555;
+  font-size: 13px;
+  margin: 0;
+}
+
+.events__item:hover .events__date {
+  border-left: 3px solid #84b2c2;
+}
+
+.events__item:hover .events__day {
+  color: #000;
+}
+
+.events__item:hover .events__month {
+  color: #666;
+}
+
+.events__item:hover .events__desc {
+  color: SteelBlue;
+}
