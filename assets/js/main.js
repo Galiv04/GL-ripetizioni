@@ -23,17 +23,17 @@ function refreshOnUserData(docData) {
 
   if (docData) {
     section.innerHTML = `
-                <div class="container">
+                <div class="container" style="margin-top: 100px;">
                 <div class="row">
                   <div class="col-lg-8 offset-lg-2">
-                    <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 20px;">
                       <h4>Le tue prossime <em>lezioni</em></h4>
                       <img src="assets/images/heading-line-dec.png" alt="">
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="container" style="max-width: 500px; margin-bottom: 50px;">
+              <div class="container" style="max-width: 500px; margin:auto; width: 80%; padding: 20px;">
                 <div id="user-lessons" class="row">
                   <!-- js script user last lessons -->
                 </div>
@@ -42,7 +42,7 @@ function refreshOnUserData(docData) {
               <div class="container">
                 <div class="row">
                   <div class="col-lg-8 offset-lg-2">
-                    <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
+                    <div class="section-heading wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s" style="margin-bottom: 20px;">
                       <h4>I tuoi <em>file</em></h4>
                       <img src="assets/images/heading-line-dec.png" alt="">
                     </div>
@@ -229,7 +229,7 @@ function getUserLastNEvents(calData, N) {
 
 function writeEventsList(events) {
   lessonsContainer = document.getElementById("user-lessons");
-  if (events) {
+  if (events.length!=0) {
     for (let i = events.length - 1; i >= 0; i--) {
       startStringLength = events[i].startTimeStr.length;
       endStringLength = events[i].endTimeStr.length;
@@ -238,15 +238,23 @@ function writeEventsList(events) {
       dateString = events[i].startTimeDate.toString();
       dayString = dateString.substring(8, 10);
       monthString = dateString.substring(4, 7);
+      startTimetime = events[i].startTimetime;
+      nowDate = new Date();
+      currentTimetime = nowDate.getTime();
+      color = '#adb5bd';
+
+      if (currentTimetime<=startTimetime) {
+        color = '#4B8EF1';
+      };
   
       lessonsContainer.innerHTML += 
         `<ul class="events__list">
         <li class="events__item">
-            <div class="events__date">
-                <span class="events__day">${dayString}</span>
-                <div class="events__month">${monthString}</div>
+            <div class="events__date" style="border-left-color: ${color};">
+                <span class="events__day" style="color:${color};">${dayString}</span>
+                <div class="events__month" style="color:${color};">${monthString}</div>
             </div>
-            <p class="events__desc">Ore ${startString} - ${endString}.</p>
+            <p class="events__desc" style="color:${color};";">Ore ${startString} - ${endString}.</p>
         </li>
       </ul>`;
     }
@@ -258,7 +266,7 @@ function writeEventsList(events) {
                 <span class="events__day"></span>
                 <div class="events__month"></div>
             </div>
-            <p class="events__desc">Nessun Lezione.</p>
+            <p class="events__desc">Nessuna Lezione.</p>
         </li>
       </ul>`;
   }
