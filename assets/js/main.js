@@ -278,7 +278,7 @@ function writeNextUserLessons() {
   writeEventsList(events);
 };
 
-var cors_api_url = "https://cors-anywhere.herokuapp.com/";
+var cors_api_url = "https://proxy.cors.sh/";
 var options = {
   method: "GET",
 };
