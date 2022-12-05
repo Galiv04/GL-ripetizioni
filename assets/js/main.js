@@ -278,7 +278,7 @@ function writeNextUserLessons() {
   writeEventsList(events);
 };
 
-var cors_api_url = "https://proxy.cors.sh/";
+var cors_api_url = "https://api.codetabs.com/v1/proxy?quest=";
 var options = {
   method: "GET",
 };
