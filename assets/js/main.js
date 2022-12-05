@@ -57,7 +57,7 @@ function refreshOnUserData(docData) {
                 `;
 
     userFilesSection = document.getElementById("user-files");
-    userFilesSection.innerHTML = `<iframe src="https://drive.google.com/embeddedfolderview?id=${docData.folderID}#grid" style="width:100%; height:600px; border:0;"></iframe>`;
+    userFilesSection.innerHTML = `<iframe src="https://drive.google.com/embeddedfolderview?id=${docData.folderID}#list" style="width:100%; height:600px; border:0;"></iframe>`;
   } else {
     section.innerHTML = `
           <p style="text-align: center; margin-top: 140px; margin-bottom: 20px; color: red; font-weight: 900"> Utente non trovato. Riprova. </p>
