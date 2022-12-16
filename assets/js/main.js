@@ -59,7 +59,7 @@ function getGDriveFiles(folderID) {
 
         if (lastModDate == "Invalid Date") {
           // undefined (because only today time)
-          lastModDate = new Date(nowDate.toLocaleDateString() + " " + lastModStr);
+          lastModDate = new Date(nowDate.toLocaleDateString() + " " + lastModStr.substring(0, lastModStr.length-3));
         } else if (lastModDate.getFullYear() != thisYear) {
           // year info is missing
           lastModDate.setFullYear(thisYear);
