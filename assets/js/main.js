@@ -1,5 +1,5 @@
 // testing
-// user = "alessandrosaracino26@gmail.com";
+// user = "xxx@gmail.com";
 
 // Firebase
 
@@ -17,6 +17,81 @@ fb = firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 db = firebase.firestore();
+
+function getGDriveFiles(folderID) {
+  let url = `https://api.codetabs.com/v1/proxy?quest=https://drive.google.com/embeddedfolderview?id=${folderID}#list`;
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url);
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      console.log("User Files Request status: ", xhr.status);
+      // console.log(xhr.responseText);
+      el = document.createElement("html");
+      el.innerHTML = xhr.responseText;
+      nFiles = el.childNodes[1].childNodes[1].childNodes[2].childNodes.length;
+      files = []; //array of objects
+
+      // get user files array
+      for (let i = 0; i < nFiles; i++) {
+        let file = {};
+
+        file.title =
+          el.childNodes[1].childNodes[1].childNodes[2].childNodes[
+            i
+          ].childNodes[0].childNodes[0].innerText;
+
+        file.url =
+          el.childNodes[1].childNodes[1].childNodes[2].childNodes[
+            i
+          ].childNodes[0].childNodes[0].href;
+
+        lastModStr =
+          el.childNodes[1].childNodes[1].childNodes[2].childNodes[i]
+            .childNodes[1].textContent;
+
+        // get a correct lastModDate
+        lastModDate = new Date(lastModStr);
+
+        let nowDate = new Date();
+        let thisYear = nowDate.getFullYear();
+
+        if (lastModDate == "Invalid Date") {
+          // undefined (because only today time)
+          lastModDate = new Date(nowDate.toLocaleDateString + " " + lastModStr);
+        } else if (lastModDate.getFullYear() != thisYear) {
+          // year info is missing
+          lastModDate.setFullYear(thisYear);
+        }
+
+        file.lastModDate = lastModDate;
+
+        file.previewUrl =
+          el.childNodes[1].childNodes[1].childNodes[2].childNodes[
+            i
+          ].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].src;
+
+        files.push(file);
+      }
+      files.sort(function (a, b) {
+        return -a.lastModDate.getTime() + b.lastModDate.getTime();
+      });
+
+      // write list of files on html
+      userFilesSection = document.getElementById("user-files");
+
+      for (let i = 0; i < files.length; i++) {
+        file = files[i];
+
+        userFilesSection.innerHTML += `
+          <a style="width:100%; font-size: 14px" href= "${file.url}" target="_blank"> <img src="${file.previewUrl}" style="width: 50px; height: 70px; padding: 5px;" /> ${file.title} </a> </td>`;
+      }
+    }
+  };
+
+  xhr.send();
+}
 
 function refreshOnUserData(docData) {
   section = document.getElementById("user-section");
@@ -50,14 +125,15 @@ function refreshOnUserData(docData) {
                 </div>
               </div>
               <div class="container">
-                <div id="user-files" class="row">
+                <div id="user-files" class="row" style="max-width: 600px; margin:auto; width: 100%; padding: 20px;">
                   <!-- js script userFilesSection -->
                 </div>
               </div>
                 `;
 
-    userFilesSection = document.getElementById("user-files");
-    userFilesSection.innerHTML = `<iframe src="https://drive.google.com/embeddedfolderview?id=${docData.folderID}#list" style="width:100%; height:600px; border:0;"></iframe>`;
+    getGDriveFiles(docData.folderID);
+
+    // userFilesSection.innerHTML = `<iframe src="https://drive.google.com/embeddedfolderview?id=${docData.folderID}#list" style="width:100%; height:600px; border:0;"></iframe>`;
   } else {
     section.innerHTML = `
           <p style="text-align: center; margin-top: 140px; margin-bottom: 20px; color: red; font-weight: 900"> Utente non trovato. Riprova. </p>
@@ -91,7 +167,6 @@ function readDocRef(docRef) {
         console.log("No such document!");
       }
       refreshOnUserData(docData);
-      
     })
     .catch((error) => {
       window.docData = null;
@@ -229,26 +304,31 @@ function getUserLastNEvents(calData, N) {
 
 function writeEventsList(events) {
   lessonsContainer = document.getElementById("user-lessons");
-  if (events.length!=0) {
+  if (events.length != 0) {
     for (let i = events.length - 1; i >= 0; i--) {
       startStringLength = events[i].startTimeStr.length;
       endStringLength = events[i].endTimeStr.length;
-      startString = events[i].startTimeStr.substring(startStringLength-8, startStringLength-3);
-      endString = events[i].endTimeStr.substring(endStringLength-8, endStringLength-3);
+      startString = events[i].startTimeStr.substring(
+        startStringLength - 8,
+        startStringLength - 3
+      );
+      endString = events[i].endTimeStr.substring(
+        endStringLength - 8,
+        endStringLength - 3
+      );
       dateString = events[i].startTimeDate.toString();
       dayString = dateString.substring(8, 10);
       monthString = dateString.substring(4, 7);
       startTimetime = events[i].startTimetime;
       nowDate = new Date();
       currentTimetime = nowDate.getTime();
-      color = '#adb5bd';
+      color = "#adb5bd";
 
-      if (currentTimetime<=startTimetime) {
-        color = '#4B8EF1';
-      };
-  
-      lessonsContainer.innerHTML += 
-        `<ul class="events__list">
+      if (currentTimetime <= startTimetime) {
+        color = "#4B8EF1";
+      }
+
+      lessonsContainer.innerHTML += `<ul class="events__list">
         <li class="events__item">
             <div class="events__date" style="border-left-color: ${color};">
                 <span class="events__day" style="color:${color};">${dayString}</span>
@@ -259,8 +339,7 @@ function writeEventsList(events) {
       </ul>`;
     }
   } else {
-    lessonsContainer.innerHTML += 
-        `<ul class="events__list">
+    lessonsContainer.innerHTML += `<ul class="events__list">
         <li class="events__item">
             <div class="events__date">
                 <span class="events__day"></span>
@@ -270,13 +349,12 @@ function writeEventsList(events) {
         </li>
       </ul>`;
   }
-  
-};
+}
 
 function writeNextUserLessons() {
   events = getUserLastNEvents(calData, 5);
   writeEventsList(events);
-};
+}
 
 var cors_api_url = "https://api.codetabs.com/v1/proxy?quest=";
 var options = {
@@ -328,4 +406,3 @@ function checkUserEvents() {
     }
   );
 }
-
