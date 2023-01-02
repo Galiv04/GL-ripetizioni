@@ -86,7 +86,7 @@ function getGDriveFiles(folderID) {
 
         // <img src="${file.previewUrl}" style="width: 150px; height: 110px; object-fit:cover; padding: 20px; display: block; margin:auto;" />
         userFilesSection.innerHTML += `
-        <a style="width:100%; display:flex; border-bottom:solid 1px; height: 60px;" href= "${file.url}" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/2490/2490315.png" style="height:30px; width:30px; margin:auto; margin-left:0;" /> <p style="margin:auto; width:80%; text-align:center; color:#4b8ef1"> ${file.title} </p> </a> </td>`; // limit max char at 38 for mobile view
+        <a style="width:100%; display:flex; border-bottom:solid 1px; height: auto;" href= "${file.url}" target="_blank"> <img src="https://cdn-icons-png.flaticon.com/512/2490/2490315.png" style="height:30px; width:30px; margin:auto; margin-left:0;" /> <p style="margin:auto; width:80%; text-align:center; color:#4b8ef1"> ${file.title} </p> </a> </td>`; // limit max char at 38 for mobile view
       }
     }
   };
