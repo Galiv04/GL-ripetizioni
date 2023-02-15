@@ -19,7 +19,7 @@ firebase.analytics();
 db = firebase.firestore();
 
 function getGDriveFiles(folderID) {
-  let url = `https://api.codetabs.com/v1/proxy?quest=https://drive.google.com/embeddedfolderview?id=${folderID}#list`;
+  let url = `https://corsproxy.io/?https://drive.google.com/embeddedfolderview?id=${folderID}#list`;
 
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url);
@@ -357,7 +357,7 @@ function writeNextUserLessons() {
   writeEventsList(events);
 }
 
-var cors_api_url = "https://api.codetabs.com/v1/proxy?quest=";
+var cors_api_url = "https://corsproxy.io/?";
 var options = {
   method: "GET",
 };
