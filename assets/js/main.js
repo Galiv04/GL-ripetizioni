@@ -250,9 +250,6 @@ function getEventsInRange(calData, eventsRange) {
       title: title_str,
     };
     events = [...events, event_obj];
-    events.sort(function (a, b) {
-      return -a.startTimetime + b.startTimetime;
-    });
   });
   return events;
 }
@@ -305,6 +302,11 @@ function getUserLastNEvents(calData, N) {
     }
     i = i + 1; // update cycle index
   }
+  
+  events.sort(function (a, b) {
+    return -a.startTimetime + b.startTimetime;
+  });
+  
   return events;
 }
 
