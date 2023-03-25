@@ -52,7 +52,8 @@ function getGDriveFiles(folderID) {
             .childNodes[1].textContent;
 
         // get a correct lastModDate
-        lastModDate = new Date(lastModStr);
+        date_nums = lastModStr.split("/");
+        lastModDate = new Date("20" + date_nums[2] + "/" + date_nums[1] + "/" + date_nums[0]);
 
         let nowDate = new Date();
         let thisYear = nowDate.getFullYear();
@@ -60,9 +61,6 @@ function getGDriveFiles(folderID) {
         if (lastModDate == "Invalid Date") {
           // undefined (because only today time)
           lastModDate = nowDate;
-        } else if (lastModDate.getFullYear() != thisYear) {
-          // year info is missing
-          lastModDate.setFullYear(thisYear);
         }
 
         file.lastModDate = lastModDate;
