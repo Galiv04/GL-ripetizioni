@@ -60,12 +60,11 @@ function getGDriveFiles(folderID) {
           lastModDate = new Date("20" + date_nums[2] + "/" + date_nums[1] + "/" + date_nums[0]);
         } else {
           lastModDate = new Date(lastModStr);
-          lastModDate.setYear(thisYear);
-        }
-
-        if (lastModDate == "Invalid Date") {
-          // undefined (because only today time)
-          lastModDate = nowDate;
+          if (lastModDate == "Invalid Date") {
+            lastModDate = nowDate;
+          } else {
+            lastModDate.setYear(thisYear);
+          }
         }
 
         file.lastModDate = lastModDate;
