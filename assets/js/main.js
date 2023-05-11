@@ -264,6 +264,14 @@ function getUserLastNEvents(calData, N) {
     var item = calData[2][i][1];
     // url/ user as in firestore
     var user_str = item[4][3];
+    
+    if (typeof user_str === 'string' || user_str instanceof String) {
+    // it's a string
+    }
+    else {
+    // it's something else
+      user_str = '';
+    }
 
     // if event match the user logged in ...
     if (user_str.localeCompare(user) == 0) {
