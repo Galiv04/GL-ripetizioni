@@ -254,14 +254,14 @@ function getEventsInRange(calData, eventsRange) {
 function getUserLastNEvents(calData, N) {
   // calData: raw data from iCal js library
   // eventsRange: indexes of first and final events ->[1, 100]
-  eventsRange = [1, 40]; // retrieve some events
+  eventsRange = [1, 250]; // retrieve some events
   counter = 0;
   i = eventsRange[0];
   events = [];
   // while number of events that match the user is less than N
   while (counter < N && i < eventsRange[1]) {
     // cycle
-    var item = calData[2][i][1];
+    var item = calData[2][calData[2].length-1-i][1];
     // url/ user as in firestore
     var user_str = item[4][3];
     
