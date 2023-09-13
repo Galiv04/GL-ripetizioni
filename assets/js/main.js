@@ -61,6 +61,52 @@ function getGDriveFiles(folderID) {
         } else if (date_nums[2]) {
           lastModDate = new Date("20" + date_nums[2] + "/" + date_nums[1] + "/" + date_nums[0]);
         } else {
+          idx = lastModStr.search(' ') + 1;
+          month = lastModStr.substr(idx,3);
+
+          // conversion from IT -> EN
+          switch (substr) {
+            case 'gen':
+              lastModStr = lastModStr.substr(0,idx-1) + 'jan';
+              break
+            case 'feb':
+              // same 
+              break
+            case 'mar':
+              // same
+              break
+            case 'apr':
+              // same
+              break
+            case 'mag':
+              lastModStr = lastModStr.substr(0,idx-1) + 'may'
+              break
+            case 'giu':
+              lastModStr = lastModStr.substr(0,idx-1) + 'jun'
+              break
+            case 'lug':
+              lastModStr = lastModStr.substr(0,idx-1) + 'jul'
+              break
+            case 'ago':
+              lastModStr = lastModStr.substr(0,idx-1) + 'aug'
+              break
+            case 'set':
+              lastModStr = lastModStr.substr(0,idx-1) + 'sep'
+              break
+            case 'ott':
+              lastModStr = lastModStr.substr(0,idx-1) + 'oct'
+              break
+            case 'nov':
+              // same
+              break
+            case 'dic':
+              lastModStr = lastModStr.substr(0,idx-1) + 'dec'
+              break
+            default:
+              console.log('Sorry, month not found');
+              break
+          }
+          
           lastModDate = new Date(lastModStr + " " + thisYear);
         }
 
