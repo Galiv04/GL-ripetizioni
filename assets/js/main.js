@@ -65,7 +65,7 @@ function getGDriveFiles(folderID) {
           month = lastModStr.substr(idx,3);
 
           // conversion from IT -> EN
-          switch (substr) {
+          switch (month) {
             case 'gen':
               lastModStr = lastModStr.substr(0,idx-1) + 'jan';
               break
