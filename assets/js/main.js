@@ -178,6 +178,7 @@ function refreshOnUserData(docData) {
                 `;
 
     getGDriveFiles(docData.folderID);
+    checkUserEvents();
 
     // userFilesSection.innerHTML = `<iframe src="https://drive.google.com/embeddedfolderview?id=${docData.folderID}#list" style="width:100%; height:600px; border:0;"></iframe>`;
   } else {
@@ -189,7 +190,7 @@ function refreshOnUserData(docData) {
               <input class="material-form__input" type="email" placeholder=" " id="input-email" pattern="[0-9a-zAZÑñ._@-]{10,50}" maxlength="50"/>
               <label class="material-form__label" for="input-email">Email </label>
               </div>
-              <p id="login-button" onclick="checkUser(); checkUserEvents();" class="material-form__p">Login</p>
+              <p id="login-button" onclick="checkUser();" class="material-form__p">Login</p>
           </form>
       `;
   }
