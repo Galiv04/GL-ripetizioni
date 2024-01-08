@@ -307,7 +307,7 @@ function getUserLastNEvents(calData, N) {
   // while number of events that match the user is less than N
   while (counter < N && i < eventsRange[1]) {
     // cycle
-    var item = calData[2][calData[2].length-1-i][1];
+    var item = calData[2][calData[2].length-i][1];
     // url/ user as in firestore
     var user_str = item[4][3];
     
