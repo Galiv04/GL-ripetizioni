@@ -19,7 +19,7 @@ firebase.analytics();
 db = firebase.firestore();
 
 function getGDriveFiles(folderID) {
-  let url = `https://corsproxy.io/?https://drive.google.com/embeddedfolderview?id=${folderID}#list`;
+  let url = `https://corsproxy.io/?url=https://drive.google.com/embeddedfolderview?id=${folderID}#list`;
 
   let xhr = new XMLHttpRequest();
   xhr.open("GET", url);
