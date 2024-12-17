@@ -416,7 +416,7 @@ function writeNextUserLessons() {
   writeEventsList(events);
 }
 
-var cors_api_url = "https://corsproxy.io/?";
+var cors_api_url = "https://corsproxy.io/?url=";
 var options = {
   method: "GET",
 };
